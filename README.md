@@ -30,9 +30,6 @@ A Go CLI tool to **decrypt, encrypt, manage, and extract resource packs**.
 #### Features
 
 - Decrypt / Encrypt resource packs
-- Auto-minify JSON
-- Auto-regenerate UUIDs in `manifest.json`
-- Auto-compress PNG files
 - **Steal resource packs from a server** (Xbox authentication required)
 
 #### Example usage
