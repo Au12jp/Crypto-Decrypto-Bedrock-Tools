@@ -1,6 +1,6 @@
 # Crypto-Decrypto-Bedrock-Tools
 
-> [日本語版はこちら](README.ja.md)
+> [日本語版はこちら](README_ja.md)
 
 A toolset for encrypting, decrypting, and manipulating Minecraft Bedrock packs.  
 This repository organizes multiple related projects as submodules.
