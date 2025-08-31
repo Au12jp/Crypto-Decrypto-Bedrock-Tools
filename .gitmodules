@@ -1,6 +1,3 @@
 [submodule "bedrockpack/bedrockpack"]
 	path = bedrockpack/bedrockpack
 	url = https://github.com/AkmalFairuz/bedrockpack.git
-[submodule "bedrocktool"]
-	path = bedrocktool
-	url = https://github.com/bedrock-tool/bedrocktool.git
