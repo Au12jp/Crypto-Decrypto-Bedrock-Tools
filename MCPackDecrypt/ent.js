@@ -5,7 +5,7 @@ const aescfb = require("./aes");
 const skinKey = "s5s5ejuDru4uchuF2drUFuthaspAbepE";
 
 const localStatePath = path.join(
-  "/Users/hinonaoki/Library/Application Support/mcpelauncher-aoki/"
+  "/Users/~/Library/Application Support/mcpelauncher-aoki/"
 );
 const mcpePath = path.join(localStatePath, "/games/com.mojang/minecraftpe");
 

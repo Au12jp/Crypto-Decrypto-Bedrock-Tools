@@ -4,7 +4,7 @@ const fs = require("fs");
 const PackDecryptor = require("./packDecrypter");
 
 const minecraftFolderPath = path.join(
-  "/Users/hinonaoki/Library/Application Support/mcpelauncher-aoki/"
+  "/Users/~/Library/Application Support/mcpelauncher-aoki/"
 );
 const premiumCachePath = path.join(minecraftFolderPath, "premium_cache");
 const worldsPath = path.join(
