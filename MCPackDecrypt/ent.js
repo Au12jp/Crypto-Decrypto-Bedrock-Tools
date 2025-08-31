@@ -4,10 +4,23 @@ const aescfb = require("./aes");
 
 const skinKey = "s5s5ejuDru4uchuF2drUFuthaspAbepE";
 
-const localStatePath = path.join(
-  "/Users/~/Library/Application Support/mcpelauncher-aoki/"
-);
-const mcpePath = path.join(localStatePath, "/games/com.mojang/minecraftpe");
+let mcpePath;
+let localStatePath;
+
+if (process.platform === "darwin") {
+  const minecraftFolderPath = path.join(
+    "/Users/~/Library/Application Support/mcpelauncher/"
+  );
+
+  localStatePath = minecraftFolderPath;
+  mcpePath = path.join(localStatePath, "/games/com.mojang/minecraftpe");
+} else {
+  localStatePath = path.join(
+    process.env.LocalAppData,
+    "/Packages/Microsoft.MinecraftUWP_8wekyb3d8bbwe/LocalState"
+  );
+  mcpePath = path.join(localStatePath, "/games/com.mojang/minecraftpe");
+}
 
 const keyDb = {};
 

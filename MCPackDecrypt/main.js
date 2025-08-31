@@ -3,14 +3,28 @@ const path = require("path");
 const fs = require("fs");
 const PackDecryptor = require("./packDecrypter");
 
-const minecraftFolderPath = path.join(
-  "/Users/~/Library/Application Support/mcpelauncher-aoki/"
-);
-const premiumCachePath = path.join(minecraftFolderPath, "premium_cache");
-const worldsPath = path.join(
-  minecraftFolderPath,
-  "/games/com.mojang/minecraftWorlds"
-);
+let premiumCachePath, worldsPath;
+
+if (process.platform === "darwin") {
+  const minecraftFolderPath = path.join(
+    "/Users/~/Library/Application Support/mcpelauncher/"
+  );
+
+  premiumCachePath = path.join(minecraftFolderPath, "premium_cache");
+  worldsPath = path.join(
+    minecraftFolderPath,
+    "/games/com.mojang/minecraftWorlds"
+  );
+} else {
+  const minecraftFolderPath = path.join(
+    process.env.LocalAppData,
+    "/Packages/Microsoft.MinecraftUWP_8wekyb3d8bbwe"
+  );
+
+  const localStatePath1 = path.join(minecraftFolderPath, "LocalState");
+  premiumCachePath = path.join(localStatePath1, "premium_cache");
+  worldsPath = path.join(localStatePath1, "/games/com.mojang/minecraftWorlds");
+}
 
 // ---------- ワールドが暗号化されているか確認 ----------
 function checkWorldEncrypted(worldPath) {
