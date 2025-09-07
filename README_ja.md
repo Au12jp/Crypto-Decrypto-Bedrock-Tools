@@ -1,13 +1,24 @@
 # Crypto-Decrypto-Bedrock-Tools
 
 > [English version here](README.md)
-
-Minecraft Bedrock のパックを **暗号化・復号・解析** するためのツールセットです。  
-このリポジトリは以下の 3 つの関連プロジェクトをサブモジュールとしてまとめています：
+> Minecraft Bedrock のパックを **暗号化・復号・解析** するためのツールセットです。  
+> このリポジトリは以下の 3 つの関連プロジェクトをサブモジュールとしてまとめています：
 
 - **MCPackDecrypt**（Node.js） → マーケットプレイス `.mcpack` / `.mctemplate` 専用復号
 - **bedrockpack**（Go） → パックの暗号化 / 復号 / 管理
 - **bedrocktool**（Go） → サーバーからワールド・パック・スキンを取得するプロキシ兼ユーティリティ
+
+---
+
+## ⚠️ 重要な注意事項
+
+**bedrockpack を使用する前に、必ず最新版の gophertunnel を取得してください：**
+
+```bash
+go get -u github.com/sandertv/gophertunnel@latest
+```
+
+この手順を実行しないと、プロトコルバージョンの不整合により接続エラーが発生します。
 
 ---
 
@@ -17,7 +28,6 @@ Minecraft Bedrock のパックを **暗号化・復号・解析** するため�
 
 Node.js 製の小型ツール。  
 Minecraft **Marketplace（公式ストア）専用の `.mcpack` / `.mctemplate`** を復号できます。
-
 👉 主にマーケットプレイス配布のワールドやパック解析に使用。
 
 ---
@@ -38,10 +48,8 @@ Go 製 CLI ツールで、**リソースパックの暗号化・復号・管理�
 ```bash
 # 復号
 bedrockpack decrypt <path to pack> <key>
-
 # 暗号化（キー自動生成も可）
 bedrockpack encrypt <path to pack> <key (optional)>
-
 # サーバーから直接取得
 bedrockpack steal <server ip:port>
 ```
@@ -68,10 +76,8 @@ Go 製 CLI ツールで、**Minecraft Bedrock のプロキシ兼ユーティリ�
 ```bash
 # ワールドをダウンロード
 bedrocktool worlds -debug=false <server info>
-
 # サーバーのリソースパックを保存
 bedrocktool packs <server info>
-
 # Realm 一覧を取得
 bedrocktool list-realms
 ```
@@ -98,3 +104,19 @@ git submodule update --init --recursive
 
 - Node.js（MCPackDecrypt 用）
 - Go（bedrockpack, bedrocktool 用）
+
+---
+
+## 🔧 セットアップ手順
+
+1. リポジトリをクローン（サブモジュール込み）
+2. **重要**: bedrockpack ディレクトリで以下を実行：
+   ```bash
+   cd bedrockpack
+   go get -u github.com/sandertv/gophertunnel@latest
+   go mod tidy
+   ```
+3. ツールをビルド：
+   ```bash
+   go build
+   ```
