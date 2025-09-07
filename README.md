@@ -1,13 +1,24 @@
 # Crypto-Decrypto-Bedrock-Tools
 
 > [日本語版はこちら](README_ja.md)
-
-A toolkit for **encrypting, decrypting, and analyzing** Minecraft Bedrock packs.  
-This repository organizes three related projects as submodules:
+> A toolkit for **encrypting, decrypting, and analyzing** Minecraft Bedrock packs.  
+> This repository organizes three related projects as submodules:
 
 - **MCPackDecrypt** (Node.js) → Marketplace `.mcpack` / `.mctemplate` decryption
 - **bedrockpack** (Go) → Pack decryption / encryption / management
 - **bedrocktool** (Go) → Proxy & utility for downloading worlds, packs, and skins
+
+---
+
+## ⚠️ Important Notice
+
+**Before using bedrockpack, you must update to the latest gophertunnel:**
+
+```bash
+go get -u github.com/sandertv/gophertunnel@latest
+```
+
+Without this step, you will encounter connection errors due to protocol version mismatches.
 
 ---
 
@@ -17,7 +28,6 @@ This repository organizes three related projects as submodules:
 
 A small Node.js tool.  
 Specialized for **official Marketplace `.mcpack` / `.mctemplate`** decryption.
-
 👉 Mainly used for analyzing packs and worlds distributed in the Marketplace.
 
 ---
@@ -37,10 +47,8 @@ A Go CLI tool to **decrypt, encrypt, manage, and extract resource packs**.
 ```bash
 # Decrypt
 bedrockpack decrypt <path to pack> <key>
-
 # Encrypt (key optional, can be auto-generated)
 bedrockpack encrypt <path to pack> <key (optional)>
-
 # Steal directly from a server
 bedrockpack steal <server ip:port>
 ```
@@ -67,10 +75,8 @@ Notably allows **downloading worlds, skins, and packs from servers**.
 ```bash
 # Download a world
 bedrocktool worlds -debug=false <server info>
-
 # Save server resource packs
 bedrocktool packs <server info>
-
 # List your Realms
 bedrocktool list-realms
 ```
@@ -97,3 +103,19 @@ git submodule update --init --recursive
 
 - Node.js (for MCPackDecrypt)
 - Go (for bedrockpack, bedrocktool)
+
+---
+
+## 🔧 Setup Instructions
+
+1. Clone the repository (with submodules)
+2. **Important**: In the bedrockpack directory, run:
+   ```bash
+   cd bedrockpack
+   go get -u github.com/sandertv/gophertunnel@latest
+   go mod tidy
+   ```
+3. Build the tool:
+   ```bash
+   go build
+   ```
